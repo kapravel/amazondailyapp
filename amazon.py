@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 import sys
-from optparse import OptionParser  
+from optparse import OptionParser
 import mechanize
 from BeautifulSoup import BeautifulSoup
 import time,random
@@ -39,7 +39,7 @@ def getfreeapp(html, br):
         else:
             print "Free app not free!"
 
-if __name__ == '__main__': 
+if __name__ == '__main__':
 
     kr = Keyring()
     #time.sleep(random.randint(1,120))
@@ -57,9 +57,15 @@ if __name__ == '__main__':
         br["email"] = options.username
         br["password"] = options.password
     else:
-	# set your static credentials here if you want
-	br["email"] = kr.get_user(14)
-	br["password"] = kr.get_password(14)
+        while kr.get_user("Amazon") is None:
+            user = raw_input('Amazon user name:')
+            password = raw_input('Amazon password:')
+            ok = raw_input('Save (y/N)?').lower().startswith('y')
+            if ok:
+                kr.set_password("Amazon", user, password)
+    # set your static credentials here if you want
+    br["email"] = kr.get_user("Amazon")
+    br["password"] = kr.get_password("Amazon")
     logged_in = br.submit().read()
 
     error_str = "The e-mail address and password you entered do not match any accounts on record."
