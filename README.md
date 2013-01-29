@@ -13,4 +13,4 @@ If you don't want to use gnome's keyring simply edit amazon.py and put your cred
 Dependencies
 ============
 
-You need to have mechanize, BeautifulSoup and keyring for python installed
+You need to have mechanize, BeautifulSoup and gnomekeyring for python installed
