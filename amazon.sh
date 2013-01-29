@@ -11,4 +11,4 @@ function gnome-keyring-control() {
 }
 
 gnome-keyring-control
-python /home/kapravel/scripts/amazon/amazon.py
+python `dirname $0`/amazon.py
