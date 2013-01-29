@@ -17,7 +17,7 @@ def getOptions():
 
 def find_appstore(html):
     soup = BeautifulSoup(html)
-    for link in soup.findAll("a", {"class":"nav_a"}):
+    for link in soup.findAll("a", {"class":"nav_a nav_item"}):
         if link.find(text="Apps"):
             return link["href"]
     return None
